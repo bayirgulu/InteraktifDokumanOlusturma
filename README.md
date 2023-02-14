@@ -7,10 +7,16 @@ Veya servisin çalıştığı pc deki başka databaselerden veri çekip table ol
 Özellikler kısmı
 ![Özel![Raporlar](https://user-images.githubusercontent.com/63264874/218703150-4f50430e-16d6-4edd-8be7-4803c0860c9e.png)
 likler](https://user-images.githubusercontent.com/63264874/218703131-1658b4bb-7aea-4d9c-9b8d-d93732594b26.png)
+
 Sayfa Oluştur Kısmı
 ![SayfaOluşturma](https://user-images.githubusercontent.com/63264874/218703168-93d3e884-1fed-451a-adcb-c01002e304fc.png)
+
 Raporlar Kısmı
 ![Raporlar](https://user-images.githubusercontent.com/63264874/218704287-3e4968ef-9bea-40bb-bcc6-9e3bea0f2403.png)
+
+Database Kısmı
+![Database](https://user-images.githubusercontent.com/63264874/218707540-f265662f-cf74-445f-98c2-508bf642feeb.png)
+
 
 
 
