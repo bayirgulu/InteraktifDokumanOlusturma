@@ -1,7 +1,8 @@
 # RaporlarmaService
 Projede MS SQL Veri tabanı , Ön yüz için html js , arka plan işlemleri için c# .NET Fremwork Rest api kullanılmıştır.
-boyutlarını bizim belirleybildiğimiz bir sayfanın içine html tooları ekleyerek taşıma bouyut büyütme ve özelliklerini değiştirebileceğimiz 
-ve oluşturduğumuz yeni tasarımı database kaydedip istediğimiz zaman tekrardan çağırabileceğimiz bir proje.
+boyutlarını bizim belirleyebildiğimiz bir sayfanın içine html tooları ekleyerek taşıma boyut büyütme ve özelliklerini değiştirebileceğimiz 
+ve oluşturduğumuz yeni tasarımı database kaydedip istediğimiz zaman tekrardan çağırabiliriz.
+Veya servisin çalıştığı pc deki başka databaselerden veri çekip table olarak görüntüleyebiliriz.
 
 Özellikler kısmı
 ![Özel![Raporlar](https://user-images.githubusercontent.com/63264874/218703150-4f50430e-16d6-4edd-8be7-4803c0860c9e.png)
