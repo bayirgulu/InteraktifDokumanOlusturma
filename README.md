@@ -20,7 +20,7 @@ Database Kısmı
 
 
 
-#SETUP
+# SETUP
 Projeyi Çalıştırmak için öncelikle DBScript textinin içindekileri sql managmenta yapıştırıp DB yi oluşturmalısınız.
 DB yi yükledikten sonra RaporlamaService' nin içinde ValuesController ve DBbaglantiController daki SQL Connectionları kendinize göre değiştirmelisiniz.
 benim makinamda servis https://localhost:44357 bu adresten çalışıyor sizde farklı bir porttan çalışabilir.
