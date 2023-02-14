@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+  
+<script src="jscolor.js"></script>
+<link rel="stylesheet" href="Modal.css" />
+
+  <style>
+    html,
+
+    body {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    .selected {
+    background-color: rgb(248, 127, 127);
+    color: #FFF;
+}
+
+    #page > .tool {
+      width: fit-content;
+      border-radius: 6px;
+      padding: 5px;
+      font-family: sans-serif;
+      touch-action: none;
+      box-sizing: border-box;
+      position: absolute;
+      outline: 1px solid #aaa;
+    }
+    #ozellikbaslik{
+      font-size: 30px;
+      font-weight: bold;
+      color: crimson;
+      margin: 10px;
+      box-sizing: border-box;
+      outline: 2px solid #aaa;
+    }
+    #property{
+      margin: 3px;
+      padding: 12px 0 12px 12px;
+      border-right: 1px solid black;
+      height: 110px;
+      box-shadow: 0 0 5px rgba(9, 0, 2, 1);
+      background: rgb(203, 234, 52);
+    }
+    #createpage
+{
+     margin: 2px;
+      padding: 10px 0 10px 10px;
+      border-right: 1px solid black;
+      height: 90px;
+      box-shadow: 0 0 5px rgba(9, 0, 2, 1);
+      background: rgb(8, 227, 197);
+    max-width: 2500px;
+}
+#createrapor{
+  margin: 2px;
+      padding: 10px 0 10px 10px;
+      border-right: 1px solid black;
+      height: 90px;
+      box-shadow: 0 0 5px rgba(9, 0, 2, 1);
+      background: rgb(147, 243, 74);
+    max-width: 2500px;
+}
+#databaseislem{
+  margin: 2px;
+      padding: 10px 0 10px 10px;
+      border-right: 1px solid black;
+     
+      box-shadow: 0 0 5px rgba(9, 0, 2, 1);
+      background: rgb(232, 198, 9);
+    max-width: 2500px;
+   max-height: fit-content;
+ display: flex;
+
+}
+    #toolbox {
+      border-right: 2px solid black;
+      height: 100vh;
+      width: 200px;
+    }
+
+    #toolbox > li {
+      list-style: none;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 20px;
+      margin: 10px;
+     
+    }
+
+    #page {
+   /*   padding-left: 20px;
+      aspect-ratio: 21/29;
+      max-height: calc(100% - 64px);*/
+
+      width: 10.5cm;
+    height: auto;
+    padding: 0.1cm;
+    margin: 0.1cm ;
+    border: 1px #D3D3D3 solid;
+    border-radius: 2px;
+    background: white;  
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-height: fit-content;
+ display:inline-block;
+    }
+
+    #area {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 15% 250%;
+      grid-auto-rows: 300%;
+    }
+    #display-image{
+      
+  width: 400px;
+  height: 225px;
+  object-fit: contain;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 150px;
+  cursor: pointer;
+}
+
+    @media print {
+      #toolbox {
+        display: none !important;
+      }
+      .tool {
+        outline: none !important;
+      }
+      #property{
+        display: none !important;
+      }
+      #createpage{
+        display: none !important;
+      }
+      #createrapor{
+        display: none !important;
+      }
+      #databaseislem{
+        display: none !important;
+      }
+    #page{
+      transform: scale(2);
+      transform-origin: 0 0 ;
+     
+    }
+     .tab{
+      display: none !important;
+     }
+    
+    }
+    #toolbox,#page {background-color: rgb(255, 255, 255);}
+    body{background-color: #ccc;}
+  </style>
+  <script  src="function.js"></script>
+  <script src="interact.min.js"></script>
+  <script src="TableResizable.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="modal">
+    <div>
+      <h3 id="modal-kapat">x</h3>
+      <label>SQL Kodu Başlığı</label>
+      <input type="text" placeholder="örn Urunler Tablosu" id="sqlkodtext"/> 
+      <button id="sqlkaydet">Kaydet</button>
+    </div>   
+  </div>
+
+  <div id="area">
+    <ul id="toolbox">
+      <li style="margin-bottom:50px; color:rgb(0, 136, 255);text-align: center;font-weight: bold;box-shadow: 0 0 5px rgba(0, 0, 0, 200);"><button style="text-decoration: underline;" onclick="window.print();">Yazdır yada PDF al </button>  </l>
+     
+      <li style="margin-bottom: 40px;color: chocolate;text-align: center; font-weight: bold; text-decoration: underline; font-size: 25px;">Araç Kutusu</li>
+    </ul>
+    <div id="main" style="height: 100vh;width: calc(100vw - 200px); background-color: #aaa;">
+      <div class="tab">
+        <button class="tablinks" onclick="openBox(event, 'property')">Özellikler</button>
+        <button class="tablinks" onclick="openBox(event, 'createpage')">Sayfa Oluştur</button>
+        <button class="tablinks" onclick="openBox(event, 'createrapor')">Raporlar</button>
+        <button class="tablinks" onclick="openBox(event, 'databaseislem')">Database</button>
+        <button class="tablinks" onclick="openBox(event,'Kapat')">Kapat</button>
+      </div>
+      
+      <div id="property" class="tabcontent">
+        <div id="FontDiv" style="margin-bottom:5px ;">
+          <label for="FONTSIZE">
+            <span>Font Size</span>
+            <input type="text" id="fontsizee" onchange="FontDegisti(event)" />
+          </label>
+          <label for="COLOR">
+            <span>Font Rengi</span>
+            <input  id="fontcolor" value="#000000FF" data-jscolor="{}" onchange="RenkDegisti(event)" />
+          </label>   
+        
+          <label for="checkbox1">
+            <span>kalın </span>
+            <input type="checkbox"id="kalincheck"onchange="FontKalin(event)"/>
+          </label>  
+          <label for="checkbox2">
+            <span>italik </span>
+            <input type="checkbox"id="italiccheck"onchange="FontItalic(event)"/>
+          </label>  
+          <label for="checkbox1">
+            <span>altçizgi </span>
+            <input type="checkbox"id="altcheck"onchange="FontAltCizgi(event)" style="margin-right:2px ;"/>
+          </label> 
+        <div>
+          <span>Yazı Tipi </span>
+          <select  id="YaziTipi" aria-invalid="false" style="margin: 12px;" onchange="YaziTipi(event)">
+            <option value="">-- Select One --</option>
+            <option value="Times">Times new Roman</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Arial">Arial</option>
+            <option value="Garamond">Garamond</option>
+            <option value="monospace">Courier New</option>
+            <option value="cursive">Cursive</option>
+          </select>
+          <span>Tablo Satır Sayısı</span>
+          <input type="text" id="tablesatir" value="2"/>
+        </label>
+        <span>Tablo Sutun Sayısı</span>
+        <input type="text" id="tablesutun" value="2"/>
+      </label>
+        </div>
+                
+        </div>
+           
+        <label for="fotoyukle"id="FileLabel">
+          <span> Foto Yükle</span>
+          <input type='file' id="fileYukle"/>
+        </label> 
+        <label for="pageborderbox"id="pageborder" style="margin-right:8px ;">
+          <span>Sayfa Kenar çizgileri</span>
+          <input type="checkbox"id="boslukcheck"onchange="SayfaKenarBosluk(event)"/>
+        </label> 
+     <button id="ArkaPlan" style="background-color: #179ddb;margin-top: 4px;" class="drag button">Arkaplan Değistir</button>
+      </div>
+      
+      <div id="createpage" class="tabcontent">
+        <div style="margin-bottom: 4px;">
+          <label style="margin: 2px;">
+            <span style="margin-right:5px ;">Kağıt Boyutu </span>
+            <select  id="SayfaBoyutu" aria-invalid="false" style="margin-right:10px ;" onchange="SayfaDegisti(event)">
+              <option value="">-- Select One --</option>
+              <option value="A4">A4</option>
+              <option value="A5">A5</option>
+              <option value="Ozel">Özel</option>
+            </select>
+          </label>      
+         
+        </div>
+          <label style="margin: 8px;" for="FONTSIZE">
+            <span>Genişlik(width)</span>
+            <input type="text" id="pagewidth"  />
+          </label>
+          <label style="margin:8px ;" for="FONTSIZE">
+            <span>Yükseklik(height)</span>
+            <input type="text" id="pageheight" />
+          </label>
+          <div>
+            <label>
+              <button style="margin:5px;color:rgb(198, 11, 236);font-weight:bold;font-size: 18px; border: 1px #D3D3D3 solid;"  onclick="SayfaOlustur()">Yeni Çalışma sayfası aç</button>
+            </label>
+           
+          </div>
+      </div>
+      
+
+      <div id="createrapor" class="tabcontent">
+        <label style="margin-left:8px;">
+          <span style="margin-right:14px ;">Raporlar</span>
+          <select  id="Raporlar" aria-invalid="false" style="margin-right:20px ;" onchange="RaporSecildi(event)">
+            <option value="">-- Select One --</option>
+          </select>
+        </label> 
+        <label>
+          <span>Rapor adı:</span>
+          <input type="text" id="RaporText"/>
+        </label> 
+        <div>
+          <label>
+            <button id="SayfayiKaydet" style="margin:10px;color:rgba(76, 61, 0, 0.864);font-weight:bold;font-size: 18px; border: 1px #D3D3D3 solid;">Sayfayı Rapor olarak kaydet</button>
+          </label>
+          <label>
+            <button id="RaporuSil" style="margin:10px;color:rgba(252, 0, 0, 0.918);font-weight:bold;font-size: 18px; border: 1px #D3D3D3 solid;">Secilen Raporu Sil</button>
+          </label>      
+        </div>
+       
+      </div>
+
+      <div id="databaseislem"class="tabcontent">
+        
+          <div style="display: flex;flex-direction: column; margin: 5px;">
+            <textarea id="connectionmetin" placeholder="Database Bağlanmak için baglanti metnini girin" style="width:300px;"></textarea>
+            <button id="DatabaseBaglan" style="background-color: #038807;margin-top: 8px;"class="button">Veritabanına Bağlan </button>             
+          </div>
+                       
+          <div style="display: flex;flex-direction: column;margin: 5px;">
+            <textarea id="sqlmetin" placeholder="calistirmak istedeiğiniz sql kodunu yazın" style="width:300px;"></textarea>
+            <button id="sqlcalistir" style="background-color: #474343;margin-top: 8px;"class="button">sql kodunu çalıştır</button>
+          </div>  
+          <div style="display: flex;flex-direction: column;margin: 5px;">
+            <label style="margin-left:8px;">
+              <span style="margin-right:14px ;">Kayıtlı Sorgular</span>
+              <select  id="Sorgular" aria-invalid="false" onchange=" alert('sorgu degisit')//RaporSecildi(event)">
+                <option value="">-- Cağrılmsını istediğiniz Sorguyu Seçin --</option>            
+              </select>
+            </label> 
+            <button id="sorgukaydet" style="background-color: #098ddf;margin-top: 32px;"class="button">SQL Sorgusu Kaydet</button>
+          </div>  
+              
+      </div>
+                           
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
+      <script>
+        let sıra=0;
+        const colors = [
+  "gray",
+  "yellow",
+  "green",
+  "#c7bf67",
+  "#7b55cf",
+  "#de4747",
+  "#2963ab",
+];
+        document.getElementById("ArkaPlan").addEventListener("click",async function(){
+    
+          if (sıra == 7) sıra = 0;
+  const secilenRenk = colors[sıra];
+  sıra++;
+  document.getElementById("main").style.backgroundColor = secilenRenk;
+        
+        })
+       
+      function openBox(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        if(cityName!=="Kapat"){
+          document.getElementById(cityName).style.display = "flex";
+        evt.currentTarget.className += " active";
+        }
+      
+      }
+      </script>
+          <!-- <h1  id ="ozellikbaslik">Özellik Penceresi</h1>      -->
+
+
+      <script type="text/javascript">
+     var dbRaporlar={};
+
+     function RaporSecildi(event){
+      var sectiontool=event.target;
+      console.log(sectiontool.value)
+      var calismasayfasi=document.getElementById("page");
+      var bulundu=false;
+      for(let i=0;i<dbRaporlar.length;i++){
+        if(dbRaporlar[i].name===sectiontool.value){
+          calismasayfasi.style.width=dbRaporlar[i].pagewidth;
+          calismasayfasi.style.height=dbRaporlar[i].pageheight;
+          calismasayfasi.innerHTML=dbRaporlar[i].html;
+          
+          bulundu=true;
+          break;
+        }
+     
+      }
+      if(bulundu===false){
+alert("secilen rapor db de bulunamadı")
+      }
+/* if (localStorage.getItem("pagewidth")&&localStorage.getItem("pageheight")){
+calismasayfasi.style.width=localStorage.getItem("pagewidth");
+calismasayfasi.style.height=localStorage.getItem("pageheight");
+}
+if(localStorage.getItem("pageBody"))
+console.log(localStorage.getItem("pageBody"))
+  document.getElementById("page").innerHTML = localStorage.getItem("pageBody") */
+} 
+      
+    
+     function getBase64(file) {
+   var reader = new FileReader();
+   reader.readAsDataURL(file);
+   reader.onload = function () {
+     console.log(reader.result);
+   };
+   reader.onerror = function (error) {
+     console.log('Error: ', error);
+   };
+}
+
+var id=0;
+  var tutucuid;
+
+
+
+
+  function CanvasBoyutEsitle(){
+    var canvas = document.getElementById("canvas");
+var div = document.getElementById("page");
+//console.log(div.clientWidth);
+canvas.width = div.clientWidth;
+canvas.height = div.clientHeight;
+canvas.style.width = div.clientWidth + "px";
+canvas.style.height = div.clientHeight + "px";
+  }
+     window.addEventListener('load', function() {
+   
+    CanvasBoyutEsitle();
+
+    GetElementInsideContainer("property","FileLabel").style.display="none";  
+      if(typeof(localStorage.getItem("ID"))==="object"){
+        localStorage.setItem("ID",uuidv4());  
+      };    
+      
+      if(typeof(localStorage.getItem("ConnectionString"))!=="object"){
+        document.getElementById("connectionmetin").value=localStorage.getItem("ConnectionString");
+      }
+      
+   console.log(localStorage.getItem("ConnectionString"));
+   console.log(localStorage.getItem("ID"));
+    
+      const rawresponse=   fetch("https://localhost:44357/api/values", {    // kaydedilmek veya güncellenmek isteyen raporu api ye yollar
+      
+      method: "GET",
+     
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Methods":"DELETE, POST, GET,PUT",
+        "Access-Control-Allow-Headers":"Content-Type, Authorization, X-Requested-With",
+        Accept: 'text/plain'
+      },
+    
+    //  body: JSON.stringify(yeniraporjson)
+    })
+    .then((response) => {
+     response.text().then((text)=>{
+  
+    // databaseden gelen rapor kayıtları json olarak
+    //console.log(text)
+      var kayitlar=JSON.parse(text);
+      console.log(kayitlar);
+      let tumraporlar=JSON.parse(kayitlar)
+var raportool= document.getElementById("Raporlar");
+dbRaporlar=tumraporlar;
+for(let i=0 ; i<tumraporlar.length;i++ ){
+var option=document.createElement("option");
+option.text=tumraporlar[i].name
+option.value=tumraporlar[i].name
+raportool.add(option);
+}
+
+     // alert(tumraporlar[2].name)
+     })
+        })
+    
+    .catch(error => {
+      console.error(error)
+    })  
+    
+    document.getElementById("boslukcheck").checked=true;
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+        console.log(tutucuid)
+          var img = document.getElementById(tutucuid.toString())
+          img.onload = () => {
+             // URL.revokeObjectURL(img.src);  // no longer needed, free memory
+          }
+          var reader = new FileReader();
+   reader.readAsDataURL(this.files[0]);
+   reader.onload = function () {
+     console.log(reader.result);
+     img.src=reader.result;
+   };
+   reader.onerror = function (error) {
+     console.log('Error: ', error);
+   };
+    //   img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+      
+      }
+  });
+});
+document.getElementById("RaporuSil").addEventListener("click",async function(){
+var secilenrapor= document.getElementById("Raporlar");
+cevap=confirm(secilenrapor.value+" isimli raporu silmek istedğinize eminmisiniz?");
+if(cevap){
+  var url=new URL("https://localhost:44357/api/values/?name='Denemee'");
+url.searchParams.set('name',secilenrapor.value)
+console.log(url)
+
+const rawresponse=   fetch(url, {    // secilen raporu silmek için 
+      
+      method: "DELETE",
+     
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Methods":"DELETE, POST, GET,PUT",
+        "Access-Control-Allow-Headers":"Content-Type, Authorization, X-Requested-With",
+        Accept: 'text/plain'
+      },
+    
+    //  body: JSON.stringify(yeniraporjson)
+    })
+    .then((response) => {
+     response.text().then((text)=>{
+     // console.log(dbRaporlar)
+    //  console.log(secilenrapor.value)
+     alert(text)
+    // databaseden gelen rapor kayıtları json olarak
+     // var kayitlar=JSON.parse(text);
+     // dbRaporlar=JSON.parse(kayitlar)
+      window.location.reload();
+
+     })
+        })
+    
+    .catch(error => {
+      console.error(error)
+    })  
+
+}
+else{
+  alert("Secilen Rapor silinmedi");
+}
+
+
+})
+
+document.getElementById("SayfayiKaydet").addEventListener("click",async function(){
+
+ var isim= GetElementInsideContainer("createrapor","RaporText");
+if(isim.value==="" || isim.value===" "){
+alert("Rapor adı boş bırakılamaz")
+
+}
+else  {
+  var calismasayfasi=document.getElementById("page"); 
+
+let obj={
+  name:isim.value.toString(),
+  pagewidth:calismasayfasi.style.width.toString(),
+  pageheight:calismasayfasi.style.height.toString(),
+  html:calismasayfasi.innerHTML
+};
+var yeniraporjson=JSON.stringify(obj,['name','pagewidth','pageheight','html'])
+var cevap=true;
+
+for(let i =0; i<dbRaporlar.length;i++){
+if(dbRaporlar[i].name===isim.value){
+ cevap=confirm(isim.value+" isimli rapor zaten mevcut güncellensin mi?");
+  break;
+}
+}
+if(cevap){
+  const rawresponse=   fetch("https://localhost:44357/api/values", {    // kaydedilmek veya güncellenmek isteyen raporu api ye yollar
+      
+      method: "POST",
+     
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Methods":"DELETE, POST, GET,PUT",
+        "Access-Control-Allow-Headers":"Content-Type, Authorization, X-Requested-With",
+        Accept: 'text/plain'
+      },
+    
+      body: JSON.stringify(yeniraporjson)
+    })
+    .then((response) => {
+     response.text().then((text)=>{
+      //kayıt db ye yüklenince yeni rapor kayıtlarını getirmek için get isteği
+    alert(text);
+    const rawresponse=   fetch("https://localhost:44357/api/values", {    // kaydedilmek veya güncellenmek isteyen raporu api ye yollar
+      
+      method: "GET",
+     
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Methods":"DELETE, POST, GET,PUT",
+        "Access-Control-Allow-Headers":"Content-Type, Authorization, X-Requested-With",
+        Accept: 'text/plain'
+      },
+    
+    //  body: JSON.stringify(yeniraporjson)
+    })
+    .then((response) => {
+     response.text().then((text)=>{
+  
+    // databaseden gelen rapor kayıtları json olarak
+      var kayitlar=JSON.parse(text);
+      dbRaporlar=JSON.parse(kayitlar)
+
+var raportool=document.getElementById("Raporlar");
+
+var j, L = raportool.options.length - 1;
+   for(j = L; j >= 0; j--) {
+      raportool.remove(j);
+   }
+
+      for(let i=0 ; i<dbRaporlar.length;i++ ){
+var option=document.createElement("option");
+option.text=dbRaporlar[i].name
+option.value=dbRaporlar[i].name
+raportool.add(option);
+}
+
+     })
+        })
+    
+    .catch(error => {
+      console.error(error)
+    })  
+                   
+     })
+        })
+    
+    .catch(error => {
+      console.error(error)
+    })  
+}
+else{
+  alert("güncelleme işlemi yapılmadı")
+}
+
+}
+ 
+
+//var yeniraporjson='{"name":"${0}", "pagewidth":"${1}", "pageheight":"{2}","html":"{3}"}'
+
+/* localStorage.setItem("pagewidth",calismasayfasi.style.width);
+localStorage.setItem("pageheight",calismasayfasi.style.height);
+localStorage.setItem("pageBody",calismasayfasi.innerHTML); */
+})
+function uuidv4() {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+}
+
+
+function SayfaOlustur(){
+var sayfa=document.getElementById("page");
+
+var width=GetElementInsideContainer("createpage","pagewidth")
+
+
+var height=GetElementInsideContainer("createpage","pageheight")
+var genisliksayidegeri=width.value.trim().slice(0,(width.value.trim().length-2))
+var genislikolcubirim=width.value.trim().slice(-2)
+var yükseklikolcubirimi=height.value.trim().slice(-2)
+var yüksekliksayidegeri=height.value.trim().slice(0,(height.value.trim().length-2))
+
+
+
+sayfa.style.width=(genisliksayidegeri/2).toString()+genislikolcubirim
+sayfa.style.height=(yüksekliksayidegeri/2).toString()+yükseklikolcubirimi
+CanvasBoyutEsitle();
+}
+document.getElementById("DatabaseBaglan").addEventListener("click",async function(){
+  var deger=document.getElementById("connectionmetin").value;
+  console.log(deger)
+  var url=new URL("https://localhost:44357/api/DBbaglanti/?islem=1");
+  const rawresponse=   fetch(url, {    // kaydedilmek veya güncellenmek isteyen raporu api ye yollar
+      
+      method: "POST",
+     
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Methods":"DELETE, POST, GET,PUT",
+        "Access-Control-Allow-Headers":"Content-Type, Authorization, X-Requested-With",
+        Accept: 'text/plain'
+      },
+      body:JSON.stringify(deger)
+    //  body: JSON.stringify(yeniraporjson)
+    })
+    .then((response) => {
+     response.text().then((text)=>{
+      console.log(text==JSON.stringify("Baglanti Kuruldu"));
+      if(text==JSON.stringify("Baglanti Kuruldu")){
+        localStorage.setItem("ConnectionString", deger);
+        document.getElementById("connectionmetin").value=localStorage.getItem("ConnectionString");
+      }
+      alert(text);
+     
+     // alert(tumraporlar[2].name)
+     })
+        })
+    
+    .catch(error => {
+      console.error(error)
+    })  
+
+})
+
+document.getElementById("sorgukaydet").addEventListener("click",async function(){
+
+  //window.open(  "https:www.google.com", "_blank");
+const modal = document.querySelector(".modal");
+      modal.style.display = "flex";
+      const modalKapat = document.getElementById("modal-kapat");
+      modalKapat.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+document.getElementById("sqlkaydet").addEventListener("click",async function(){
+alert(document.getElementById("sqlkodtext").value);
+const objsorgu={SorguAdi:document.getElementById("sqlkodtext").value,
+SorguCumlesi:document.getElementById("sqlmetin").value};
+console.log(objsorgu);
+modal.style.display="none";
+        })
+var url=new URL("https://localhost:44357/api/DBbaglanti/?islem=2");
+  const rawresponse=   fetch(url, {    // kaydedilmek veya güncellenmek isteyen raporu api ye yollar
+      
+      method: "POST",
+     
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Methods":"DELETE, POST, GET,PUT",
+        "Access-Control-Allow-Headers":"Content-Type, Authorization, X-Requested-With",
+        Accept: 'text/plain'
+      },
+      body:JSON.stringify(sorgu)
+
+      
+    //  body: JSON.stringify(yeniraporjson)
+    })
+    .then((response) => {
+     response.text().then((text)=>{
+   
+    });
+
+}).catch(error => {
+      console.error(error)
+    })  
+})
+
+document.getElementById("sqlcalistir").addEventListener("click",async function(){
+  var sqlcodu=document.getElementById("sqlmetin").value;
+  var connectstring="";
+ 
+  if(typeof(localStorage.getItem("ConnectionString"))=='undefined'){
+        connectstring=document.getElementById("connectionmetin").value;
+        console.log("localstroge connection string yok "+connectstring)
+      }  
+  else{
+      connectstring=localStorage.getItem("ConnectionString");
+      console.log("localstroge connection string var "+connectstring);
+  }
+  
+  var sqlobje={baglanti:connectstring,sqlkod:sqlcodu};
+  var sqlstring=JSON.stringify(sqlobje);
+  console.log(JSON.stringify(sqlobje));
+  var url=new URL("https://localhost:44357/api/DBbaglanti/?islem=2");
+  const rawresponse=   fetch(url, {    // kaydedilmek veya güncellenmek isteyen raporu api ye yollar
+      
+      method: "POST",
+     
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Methods":"DELETE, POST, GET,PUT",
+        "Access-Control-Allow-Headers":"Content-Type, Authorization, X-Requested-With",
+        Accept: 'text/plain'
+      },
+      body:JSON.stringify(sqlstring)
+
+      
+    //  body: JSON.stringify(yeniraporjson)
+    })
+    .then((response) => {
+     response.text().then((text)=>{
+      if(text==JSON.stringify("HATA bağlantı kurmaya çalıştığınız DB Serverda Mevcut değil")){
+alert("sql kodunu çalıştırırken hata oluştu");
+      }
+      else{
+        var gelenveri=JSON.parse(text);
+        console.log(gelenveri);
+        console.log(JSON.parse(gelenveri));
+    var node = document.createElement("div")
+    //alert(id);
+    node.innerHTML=generateTableFromJson(JSON.parse(gelenveri),id).innerHTML;
+   // node.innerHTML="<table><tbody><tr><th>deneme<th><tr><tbody><table>";
+  
+ //   node.firstChild.innerHTML="<table><tbody><tr><th>deneme<th><tr><tbody><table>";
+	  node.firstChild.id="tool"+id.toString()
+  id=id+1;
+  console.log(generateTableFromJson(JSON.parse(gelenveri),id))
+  
+
+   console.log(node.firstChild.innerHTML);
+   
+ node.firstChild.style.fontSize="0.5em"
+     node.firstChild.style.color="rgb(0,0,0)"
+       node.firstChild.style.fontFamily="Times"
+
+  document.getElementById("fontsizee").value=node.firstChild.style.fontSize
+        document.getElementById("fontcolor").value=node.firstChild.style.color
+        document.getElementById("YaziTipi").value=node.firstChild.style.fontFamily
+      node.firstChild.classList.add("drag", "tool")
+  document.getElementById("page").insertBefore(node.firstChild,page.firstChild);
+
+      }
+    
+     })
+        })
+    
+    .catch(error => {
+      console.error(error)
+    })  
+
+
+})
+
+function SqlCalistir(event){    // sql kodu gondercek gelen json verisini tablo ya çevircek
+
+}
+
+function generateTableFromJson(json,id) {
+  // creates a <table> element and a <tbody> element
+
+    console.log(json.length);
+    const divbase=document.createElement("div");
+  const tbl = document.createElement("table");
+  tbl.id="tabel"+id.toString();
+  let j=0;
+ const thead=document.createElement("thead");
+ var sutunlar=Object.keys(json[0]);
+ for(let i=0;i<=sutunlar.length;i++){
+const th = document.createElement("th");
+if(i==0){
+th.id="Table"+id.toString()+i.toString();
+const cellText = document.createTextNode(">");
+th.appendChild(cellText);
+thead.appendChild(th);
+}
+else{
+  th.contentEditable=true;
+  th.id="header"+id.toString()+i.toString();
+  console.log(Object.keys(json[0])[i]);
+const cellText = document.createTextNode(Object.keys(json[0])[i-1]);
+th.appendChild(cellText);
+thead.appendChild(th);
+}
+ 
+ }
+
+
+  const tblBody = document.createElement("tbody");
+
+  // creating all cells
+  for (var i = 0; i < json.length; i++) {
+    console.log(i.toString());
+    // creates a table row
+  
+    const row = document.createElement("tr");
+    row.id="satir"+i.toString();
+         
+    while(j<sutunlar.length) {
+      const cell = document.createElement("td");
+      cell.style.textAlign="center";
+      if(j==0){
+       
+      var cellText;
+     cell.id="satir"+id.toString()+i.toString()+j.toString();
+      cell.style.border="1px solid black";
+      cell.style.borderRadius="5px"
+      cell.style.fontSize="1em";     
+      cellText = document.createTextNode(">");
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+
+      const cell2=document.createElement("td");
+      cell2.id=id.toString()+i.toString()+j.toString();
+      cell2.style.border="1px solid black";
+      cell2.style.borderRadius="5px"
+      cell2.style.fontSize="1em";  
+      cellText = document.createTextNode(json[i][sutunlar[j]]); 
+      cell2.appendChild(cellText);
+      row.appendChild(cell2);
+      j++;
+      }
+      else{
+         
+   cell.contentEditable = true;
+    var cellText;
+  cell.id=id.toString()+i.toString()+j.toString();
+   cell.style.border="1px solid black";
+  cell.style.borderRadius="5px"
+  cell.style.fontSize="1em";  
+//alert((i-1).toString()+" "+j.toString());
+//console.log(json[i][sutunlar[j]]);
+ cellText = document.createTextNode(json[i][sutunlar[j]]);
+ 
+    //console.log(i.toString()+" "+j.toString());
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+    j++;
+      }
+    
+      }
+
+j=0;
+     // row.appendChild(cell);
+      tblBody.appendChild(row);
+    }
+
+    // add the row to the end of the table body
+    
+   
+  // put the <tbody> in the <table>
+    tbl.appendChild(thead);
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+ // document.body.appendChild(tbl);
+  // sets the border attribute of tbl to '2'
+  tbl.style.border="1px solid black";
+  tbl.style.borderRadius="10px";
+  
+  tbl.textAlign="center";
+  //tbl.style.tableLayout="fixed";
+
+ 
+  divbase.appendChild(tbl);
+
+  return divbase;
+  }
+
+  
+
+
+
+function generateTable( satir, sutun,id) {
+  // creates a <table> element and a <tbody> element
+    const divbase=document.createElement("div");
+  const tbl = document.createElement("table");
+tbl.id="table"+id.toString();
+ const thead=document.createElement("thead");
+
+ for(let i=0;i<=sutun;i++){
+const th = document.createElement("th");
+
+if(i==0){
+  th.id="Table"+id.toString()+i.toString();
+  const cellText = document.createTextNode(`>`);
+  th.appendChild(cellText);
+thead.appendChild(th);
+}
+else{
+  th.id="header"+id.toString()+i.toString();
+  th.contentEditable=true;
+ 
+const cellText = document.createTextNode(`Baslik`);
+th.appendChild(cellText);
+thead.appendChild(th);
+}
+  
+ }
+
+
+  const tblBody = document.createElement("tbody");
+
+  // creating all cells
+  for (let i = 0; i <= satir; i++) {
+    // creates a table row
+    const row = document.createElement("tr");
+    row.id="satir"+i.toString();
+ 
+    for (let j = 0; j <= sutun; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      const cell = document.createElement("td");
+      cell.style.textAlign="center";
+      cell.style.border="1px solid black";
+      cell.style.borderRadius="10px"
+      cell.style.fontSize="1em";
+     // cell.style.color="black";
+    
+      if(j==0){
+        cell.id="satir"+id.toString()+i.toString()+j.toString();
+        var cellText;
+    
+    cellText = document.createTextNode(`>`);
+        cell.appendChild(cellText);
+      row.appendChild(cell);
+      
+      }
+      else{
+        cell.id=id.toString()+i.toString()+j.toString();
+        cell.contentEditable = true;
+    var cellText;
+    
+        cellText = document.createTextNode(`Deger`);
+          
+     cell.appendChild(cellText);
+      row.appendChild(cell);
+      }
+    
+    }
+
+    // add the row to the end of the table body
+    tblBody.appendChild(row);
+   
+  
+  }
+
+  // put the <tbody> in the <table>
+    tbl.appendChild(thead);
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+ // document.body.appendChild(tbl);
+  // sets the border attribute of tbl to '2'
+  tbl.style.border="1px solid black";
+  tbl.style.borderRadius="10px";
+  
+  tbl.textAlign="center";
+  //tbl.style.tableLayout="fixed";
+
+ 
+  divbase.appendChild(tbl);
+
+  return divbase;
+
+}
+      </script>
+     
+    <div id="page" style="width: 10.5cm;height: 14.85cm;">     
+<canvas id="canvas" style="background-color: #ffffff;">
+
+</canvas>
+    </div> 
+     
+   <!--  <script type="text/javascript">
+      var devicePixelRatio = window.devicePixelRatio || 1;
+      console.log(devicePixelRatio)
+        var element = document.querySelector('#page');
+           
+        console.log(element.offsetHeight*devicePixelRatio);
+        console.log(element.offsetWidth*devicePixelRatio);
+  
+      </script>  -->
+    </div>
+  </div>
+  <script>
+            var a= document.getElementById("page")
+   //  console.log(a.style)
+
+
+    var toolbox = [
+      //{Name: "Başlık", Html: "<h1>Başlık</h1>"},
+    // {Name: "Çizgi", Html: "<hr style='height:2px;border-width:0;color:gray;background-color:gray'>"},
+      {Name: "Paragraf", Html: "<p>Paragraf</p>"},
+      {Name: "Resim", Html: "<img draggable='false' src='#' alt='fotoagraf'/>"},
+      {Name:"Tablo",Html:"<table><tbody><tr><th>deneme<th><tr><tbody><table>"}
+    ]
+  //  generateTable(parseInt(document.getElementById("tablesatir").value),parseInt(document.getElementById("tablesutun").value)).innerHTML
+  //  Load()
+
+   /*  document.getElementById("save").addEventListener("click", function() {
+      Save()
+    }) */
+    function GetElementInsideContainer(containerID, childID) {
+    var elm = {};
+    var elms = document.getElementById(containerID).getElementsByTagName("*");
+    for (var i = 0; i < elms.length; i++) {
+        if (elms[i].id === childID) {
+            elm = elms[i];
+          
+            break;
+        }
+    }
+    return elm;
+}
+function SayfaDegisti(event){
+var secilendeger=event.target;
+var widthtext=GetElementInsideContainer("createpage","pagewidth");
+var heighttext=GetElementInsideContainer("createpage","pageheight");
+
+if(secilendeger.value=="A4"){
+widthtext.value="21cm";
+heighttext.value="29.7cm";
+widthtext.disabled=true;
+heighttext.disabled=true;
+}
+else if(secilendeger.value=="A5"){
+  widthtext.value="14.8cm";
+heighttext.value="21cm";
+widthtext.disabled=true;
+heighttext.disabled=true;
+}
+else if(secilendeger.value=="Ozel"){
+  widthtext.disabled=false;
+  heighttext.disabled=false;
+}
+else{
+  alert("secilen değer tanınmadi")
+  widthtext.disabled=true;
+heighttext.disabled=true;
+}
+}
+function YaziTipi(event){
+  var tool=event.target;
+  var secilen=tool.value;
+  GetElementInsideContainer("page",tutucuid.toString()).style.fontFamily=secilen;
+}
+
+function SayfaKenarBosluk(event){
+var tool=event.target
+if(tool.checked==true){
+
+ var page= document.getElementById("page")
+ page.style.boxShadow="0 0 5px rgba(0, 0, 0, 0.1)"
+ page.style.border="1px #D3D3D3 solid"
+}
+ else{
+  console.log(document.getElementById("page").style )
+var page= document.getElementById("page")
+page.style.boxShadow="none"
+page.style.border="none"
+ } 
+}
+function FontItalic(event){
+  var tool=event.target
+if(document.getElementById("italiccheck").checked==true){
+  GetElementInsideContainer("page",tutucuid.toString()).style.fontStyle="italic"
+}
+else{
+  GetElementInsideContainer("page",tutucuid.toString()).style.fontStyle=""
+}
+}
+function FontAltCizgi(event){
+  var tool=event.target
+if(document.getElementById("altcheck").checked==true){
+  GetElementInsideContainer("page",tutucuid.toString()).style.textDecoration="underline"
+}
+else{
+  GetElementInsideContainer("page",tutucuid.toString()).style.textDecoration=""
+}
+
+}
+function FontKalin(event){
+var tool=event.target
+if(document.getElementById("kalincheck").checked==true){
+  console.log($(event.currentTarget).prop("tagName"));
+  GetElementInsideContainer("page",tutucuid.toString()).style.fontWeight="bold"
+}
+else{
+  GetElementInsideContainer("page",tutucuid.toString()).style.fontWeight=""
+}
+
+}
+     function FontDegisti(event){
+     
+var sa=event.target
+var sizesayidegeri=sa.value.trim().slice(0,(sa.value.trim().length-2))
+var sizekolcubirim=sa.value.trim().slice(-2)
+console.log(sizesayidegeri)
+console.log(sizekolcubirim)
+ GetElementInsideContainer("page",tutucuid.toString()).style.fontSize=(sizesayidegeri/2).toString()+sizekolcubirim;
+
+     }
+
+     function RenkDegisti(event){
+      var sa=event.target
+      console.log(sa.style.backgroundImage)
+      
+      console.log(GetElementInsideContainer("page",tutucuid))
+      GetElementInsideContainer("page",tutucuid).style.color=sa.value
+
+     }
+
+
+    //document.addEventListener("contextmenu", function(e) {
+    //  e.preventDefault()
+   // })
+
+  
+
+    toolbox.forEach(item => {
+      var toolboxItem = document.createElement("li")
+   
+      toolboxItem.innerText = item.Name
+      
+      toolboxItem.addEventListener("click", function() {
+        var node = document.createElement("div")
+      //  gizleGoster("property")
+     
+        node.innerHTML = item.Html
+        console.log($(node.firstChild).prop("tagName"));
+        node.firstChild.id="tool"+id.toString()
+        id=id+1;
+      if($(node.firstChild).prop("tagName")==="TABLE")
+      {
+        node.innerHTML= generateTable(parseInt(document.getElementById("tablesatir").value),parseInt(document.getElementById("tablesutun").value),id).innerHTML;
+        console.log(id.toString());       
+      } 
+        if($(node.firstChild).prop("tagName")!=="TABLE")
+        node.firstChild.contentEditable = true
+
+    
+       node.firstChild.style.fontSize="1em"
+      node.firstChild.style.color="rgb(0,0,0)"
+       node.firstChild.style.fontFamily="Times"
+       console.log(node.firstChild.style)
+       document.getElementById("fontsizee").value=node.firstChild.style.fontSize
+        document.getElementById("fontcolor").value=node.firstChild.style.color
+        document.getElementById("YaziTipi").value=node.firstChild.style.fontFamily
+      node.firstChild.classList.add("drag", "tool")
+        console.log(node.firstChild);
+
+       /*  node.firstChild.addEventListener("click",function(e){  // 
+          var event=e.target
+          tutucuid=parseInt(event.id)
+          console.log(event.toString()==Object.HTML)
+
+          document.getElementById("fontsizee").value=event.style.fontSize
+          document.getElementById("fontcolor").value=event.style.color
+         
+         
+        }) */
+        var page=document.getElementById("page");
+
+        if(node.firstChild.style.width>page.style.width)       
+       page.style.width=node.firstChild.style.width+2
+       
+       else if(node.firstChild.style.height>page.style.height)
+       page.style.height=node.firstChild.style.height+2;
+
+       const rect = node.firstChild.getBoundingClientRect();
+     console.log(rect)
+    
+        page.insertBefore(node.firstChild,page.firstChild)
+      })
+     
+      document.getElementById("toolbox").appendChild(toolboxItem)
+   
+    })
+
+    function dragMoveListener(event) {    // taşınma hareketi olayı
+      var target = event.target
+      // keep the dragged position in the data-x/data-y attributes
+      var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+      var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+     
+      // translate the element
+      target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+    
+      // update the posiion attributes
+      target.setAttribute('data-x', x)
+      target.setAttribute('data-y', y)
+      target.title="X: "+x.toString()+" Y: "+y.toString()   
+      //target.innerHTML="Taşınma Başladı"
+    
+    }
+
+    // this function is used later in the resizing and gesture demos
+    window.dragMoveListener = dragMoveListener
+    window.addEventListener("keyup", function(e) {
+      if(e.keyCode === 46 && !!selectedItem) {  // delete tuşuna basınca 
+       
+        document.getElementById("page").removeChild(selectedItem)
+        selectedItem = null
+        
+      }
+      if(e.keyCode===38 && !!selectedItem){    // yukarı tuşuna basınca
+        
+    var y= parseFloat(selectedItem.getAttribute('data-y')||0)
+    var x = (parseFloat(selectedItem.getAttribute('data-x')) || 0)        
+    y=y-6;
+
+        if(y>-5){
+          selectedItem.style.transform = 'translate(' + x + 'px,' + y + 'px)'
+
+selectedItem.setAttribute('data-x', x)
+selectedItem.setAttribute('data-y', y)
+        }
+ 
+      }
+      if(e.keyCode===40 && !!selectedItem){   //aşağa tuşuna basınca
+        var y= parseFloat(selectedItem.getAttribute('data-y')||0)
+    var x = (parseFloat(selectedItem.getAttribute('data-x')) || 0)        
+    y=y+6;
+
+        if(y>-6){
+          selectedItem.style.transform = 'translate(' + x + 'px,' + y + 'px)'
+
+selectedItem.setAttribute('data-x', x)
+selectedItem.setAttribute('data-y', y)
+        }
+
+      }
+      if(e.keyCode===37 && !!selectedItem){ // sol yön tuşuna basılınca 
+        var y= parseFloat(selectedItem.getAttribute('data-y')||0)
+    var x = (parseFloat(selectedItem.getAttribute('data-x')) || 0)        
+   
+    x=x-6;
+        if(x>-5){
+          selectedItem.style.transform = 'translate(' + x + 'px,' + y + 'px)'
+
+selectedItem.setAttribute('data-x', x)
+selectedItem.setAttribute('data-y', y)
+        }
+       
+      }
+      if(e.keyCode===39&& !!selectedItem){  // sağ yön tuşuna basılınca
+        var y= parseFloat(selectedItem.getAttribute('data-y')||0)
+    var x = (parseFloat(selectedItem.getAttribute('data-x')) || 0)        
+    x=x+6;
+
+        if(x>-5){
+          selectedItem.style.transform = 'translate(' + x + 'px,' + y + 'px)'
+
+selectedItem.setAttribute('data-x', x)
+selectedItem.setAttribute('data-y', y)
+        }
+
+      }
+
+    })
+
+    var selectedItem;
+    const resizableContainer = interact('#page')
+    resizableContainer.resizable({
+  edges: { bottom: true, right: true },
+  modifiers: [
+    interact.modifiers.restrictEdges({
+      outer: 'html',
+    }),
+    interact.modifiers.restrictEdges({
+      min: { width: 200, height: 200 }
+    })
+  ],
+  listeners: {
+    move: function (event) {
+      let { x, y } = event.target.dataset
+      console.log(event.target)
+      x = (parseFloat(x) || 0) + event.deltaRect.left
+      y = (parseFloat(y) || 0) + event.deltaRect.top
+    
+      Object.assign(event.target.style, {
+        width: `${event.rect.width}px`,
+        height: `${event.rect.height}px`,
+        transform: `translate(${x}px, ${y}px)`
+      
+      })
+      Object.assign(event.target.dataset, { x, y })
+      CanvasBoyutEsitle();
+     
+    }
+  }
+})
+
+    interact('.drag')
+      .resizable({
+        // resize from all edges and corners
+        edges: { left: true, right: true, bottom: true, top: true },
+        autoScroll: true,
+        listeners: {
+          move(event) {
+  
+            var target = event.target
+            var x = (parseFloat(target.getAttribute('data-x')) || 0)
+            var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+            // update the element's style
+            target.style.width = event.rect.width + 'px'
+            target.style.height = event.rect.height + 'px'
+
+          
+            console.log($(target).prop("tagName"))
+          if($(event).prop("tagName")=="DIV")
+            console.log($(event).prop("tagName"))
+            // translate when resizing from top or left edges
+            x += event.deltaRect.left
+            y += event.deltaRect.top
+
+            target.style.transform = 'translate(' + x + 'px,' + y + 'px)'
+
+            target.setAttribute('data-x', x)
+            target.setAttribute('data-y', y)
+              
+//             var canvas = document.getElementById("canvas");
+// var div = document.getElementById("page");
+// canvas.width = div.clientWidth;
+// canvas.height = div.clientHeight;
+// canvas.style.width = div.clientWidth + "px";
+// canvas.style.height = div.clientHeight + "px";
+          }
+        },
+        modifiers: [
+          // keep the edges inside the parent
+          interact.modifiers.restrictEdges({
+            outer: 'parent'
+          }),
+
+          // minimum size
+          interact.modifiers.restrictSize({
+            min: { width: 50, height: 25 }
+          })
+        ],
+
+        inertia: true
+      })
+      .draggable({
+        listeners: { move: window.dragMoveListener   },
+        inertia: true,
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: 'parent',
+            endOnly: true
+            
+          })
+        ]
+      })
+      .on("tap", function (e) {
+      //  e.preventDefault()
+        selectedItem = e.currentTarget;
+        
+        var event=e.target
+        tutucuid=event.id;
+        if($(event).prop("tagName")=="TH"&&event.id.slice(0,5)=="Table")
+          tutucuid=document.getElementById(event.id).parentElement.parentElement.parentElement.id;
+     
+
+        else if($(event).prop("tagName")=="TD"&&event.id.slice(0,5)=="satir"){
+          tutucuid=document.getElementById(event.id).parentElement.id;
+          var satir=document.getElementById(tutucuid);
+         
+          if(satir.classList.length>0)
+          satir.classList.remove("selected");
+          else
+          $(satir).addClass('selected').siblings().removeClass('selected');
+         
+        }
+    
+
+    
+       var kalincheckbox=GetElementInsideContainer("property","kalincheck");
+       var italiccheckbox=GetElementInsideContainer("property","italiccheck");
+       var altcheckbox=GetElementInsideContainer("property","altcheck");
+
+          console.log($(event).prop("tagName"));
+         // console.log(tutucuid)
+          console.log(tutucuid);
+        
+          var FontDiv=  GetElementInsideContainer("property","FontDiv")  
+          var inputImage=GetElementInsideContainer("property","FileLabel")  
+          if(event.style.fontWeight=="bold"){
+            kalincheckbox.checked=true;
+          }
+          else{
+            kalincheckbox.checked=false;
+          }
+          if(event.style.fontStyle=="italic"){
+              italiccheckbox.checked=true;
+          }
+          else{
+            italiccheckbox.checked=false;
+          }
+          if(event.style.textDecoration=="underline"){
+              altcheckbox.checked=true;
+          }
+          else{
+            altcheckbox.checked=false;
+          }
+
+          if($(event).prop("tagName")=="IMG"){
+           
+        FontDiv.style.display="none"
+        inputImage.style.display=""
+          }
+          else{
+           FontDiv.style.display=""
+           inputImage.style.display="none"   
+          }
+          var sizesayidegeri=event.style.fontSize.trim().slice(0,(event.style.fontSize.trim().length-2))
+         var sizeolcubirim=event.style.fontSize.trim().slice(-2)
+          document.getElementById("fontsizee").value=(sizesayidegeri*2).toString()+sizeolcubirim
+          document.getElementById("fontcolor").value=event.style.color
+          document.getElementById("YaziTipi").value=event.style.fontFamily
+          console.log(event.style.fontFamily)
+      })
+      .on("cancel", function(e) {
+        console.log(e);
+      })
+
+      function downloadObjectAsJson(exportObj, exportName){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", exportName + ".json");
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }
+      function Save() {
+alert("Kaydetme işlemi yapılıyor")
+/*const children = document.getElementById("page").children;
+/**@type {Array<keyof HTMLElement>} */
+const wantedProperties = ["innerText", "className", "style"];
+
+/**@type {Array<keyof CSSStyleDeclaration>} */
+const wantedStyleProperties = ["width", "height", "top", "left", "transform"];
+
+const elementList = []
+
+var elementt={name:"denemedokuman",basecode:document.getElementById("page").innerHTML.toString()}
+var elementjs=JSON.stringify(elementt);
+
+
+var calismasayfasi=document.getElementById("page");
+console.log(calismasayfasi.innerHTML);
+
+localStorage.setItem("pagewidth",calismasayfasi.style.width);
+localStorage.setItem("pageheight",calismasayfasi.style.height);
+localStorage.setItem("pageBody",calismasayfasi.innerHTML);
+      }
+
+    function GetIstegiat(){
+
+     var data;
+        const rawresponse=  fetch("https://localhost:7167/WeatherForecast", {
+      
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: 'text/plain'
+      },
+     // body: JSON.stringify(image_data_url)
+    })
+    .then((response) => {
+     response.text().then((text)=>{
+    //  console.log(text)
+    data=JSON.parse(text);
+      console.log(data.raporname)
+ 
+     })
+        })
+    
+    .catch(error => {
+      console.error(error)
+      return error;
+    })  
+
+    return data;
+      }
+
+      //var tables = document.getElementsByClassName('flexiCol');
+
+function Load(){
+
+
+ /*  var request = new XMLHttpRequest();
+   request.open("GET", "denemdokuman.json", false);
+   request.send(null)
+   var my_JSON_object = JSON.parse(request.responseText);
+   alert (my_JSON_object.result[0]); */
+
+/*    $.getJSON('denemedokuman.json', function(data) {         
+    alert(data);
+}); */
+
+
+/*const elementListJSON = localStorage.getItem("pageBody");
+if(elementListJSON === null) return;
+const elementList = [];
+try {
+    const readList = JSON.parse(elementListJSON);
+    if(!Array.isArray(readList)) return;
+    readList.forEach(child=>elementList.push(child));
+} catch (e){
+    return;
+}
+console.log(elementList);
+const page = document.getElementById("page");
+elementList.forEach(child=>{
+    const element = document.createElement("div");
+    /for(const attr of child.attributes) 
+      element.setAttribute(attr.name, attr.value);/
+    element.innerHTML = child.html;
+    console.log(element);
+    page.appendChild(element.firstChild);
+})*/
+
+
+ 
+
+ 
+//alert("Yükleme işlemi yapılıyor")
+var calismasayfasi=document.getElementById("page");
+if (localStorage.getItem("pagewidth")&&localStorage.getItem("pageheight")){
+calismasayfasi.style.width=localStorage.getItem("pagewidth");
+calismasayfasi.style.height=localStorage.getItem("pageheight");
+}
+if(localStorage.getItem("pageBody"))
+console.log(localStorage.getItem("pageBody"))
+  document.getElementById("page").innerHTML = localStorage.getItem("pageBody")
+}
+      
+  </script>
+</body>
+
+</html>
